@@ -13,17 +13,17 @@ and date and datatime formats are lost during conversion.
 * When importing, it can break large files into small chunks
 and can handle very large files gracefully in memory strapped situations.
 * All variable labels will be imported with `TableMetadataTools.jl`. 
-* All variables with value labels will be imported into CategoricalArrays. 
+* All variables with value labels will be imported as `CategoricalArrays`. 
 Original value will be lost. Only the value labels will be kept.
 If you want to keep original values, use the `keep_original = true` option.
 * All `int` or `long` variables with `%d` or `%td` formats will be imported as Julia dates
 using the `Dates` package.
 * All `float` or `double` variables with `%tc` or `%tC` formats will be
-importe as Julia `DateTime`s.
+imported as Julia `DateTime` variables.
 * When exporting, Julia Dates and DateTimes will be automatically converted to Stata with the formats `%tdNN-DD-CCYY` for dates
 and `%tc` for datetimes.
 * CategoricalArrays will be exported into `byte` or `int` types
-with all values labels.
+with all value labels.
 
 
 ## Installation
