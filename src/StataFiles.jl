@@ -761,7 +761,7 @@ function getmaxbytes(s::AbstractArray)
 end
 
 function nmissing(a::AbstractArray)
-    return count(ismissing.(s) .== true)
+    return count(ismissing.(a) .== true)
 end
 
 function get_types(outdf)
