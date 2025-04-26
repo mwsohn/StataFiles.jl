@@ -760,6 +760,10 @@ function getmaxbytes(s::AbstractArray)
     return maximum(sizeof.(skipmissing(s)))
 end
 
+function nmissing(a::AbstractArray)
+    return count(ismissing.(s) .== true)
+end
+
 function get_types(outdf)
 
     bytesize = Dict(
