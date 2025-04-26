@@ -13,9 +13,9 @@ and date and datatime formats are lost during conversion.
 * When importing, it can break large files into small chunks
 and can handle very large files gracefully in memory strapped situations.
 * All variable labels will be imported with `TableMetadataTools.jl`. 
-* All variables with value labels will be imported as `CategoricalArrays`. 
-Original value will be lost. Only the value labels will be kept.
-If you want to keep original values, use the `keep_original = true` option.
+* All variables with value labels will be imported into `CategoricalArrays` if `keep_original = false` is set. 
+Be careful. If this option is used, original value will be lost; only the value labels will be kept.
+If you want to keep original values, use the `keep_original = true` option. The default is `false`.
 * All `int` or `long` variables with `%d` or `%td` formats will be imported as Julia dates
 using the `Dates` package.
 * All `float` or `double` variables with `%tc` or `%tC` formats will be
@@ -36,7 +36,7 @@ with all value labels.
 
 ### 1. To convert a Stata .dta file to a Julia DataFrame
 ```
-df = read_stata(Statafilename::String; chunks::Int = 10; keep_original = true)
+df = read_stata(Statafilename::String; chunks::Int = 10, keep_original = false)
 ```
 
 ### 2. To convert a Julia DataFrame to a Stata .dta file
