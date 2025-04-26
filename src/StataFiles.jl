@@ -692,10 +692,10 @@ function prepare_df(outdf; verbose=verbose)
     # subset
     df = outdf[:, findall(x -> x == false, notallowed)]
 
-    datatypes = Stella.dtypes(df)
+    datatypes = dtypes(df)
     ca = [ isa(x,CategoricalArray) ? true : false for x in eachcol(df)]
-    (typelist, numbytes) = Stella.get_types(df)
-    vlabels = Stella.get_value_labels(df)
+    (typelist, numbytes) = get_types(df)
+    vlabels = get_value_labels(df)
 
     return df, datatypes, typelist, numbytes, vlabels, ca
 end
@@ -797,7 +797,7 @@ function get_types(outdf)
                 tlist[i] = vtype[Int32]
                 numbytes[i] = bytesize[tlist[i]]
             elseif typ == String
-                maxlen = Stella.getmaxbytes(outdf[:,i])
+                maxlen = getmaxbytes(outdf[:,i])
                 if maxlen < 2045
                     tlist[i] = maxlen + 1 # one byte for the null terminator
                     numbytes[i] = tlist[i]
