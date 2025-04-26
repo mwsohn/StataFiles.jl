@@ -15,7 +15,7 @@ export read_stata, write_stata
 converts a stata datafile `fn` to Julia DataFrame. An original data file bigger than 100MB will be read in `chunks` (default = 10)
 to save memory. 
 """
-function read_stata(fn::String; chunks::Int=10, keep_original = true)
+function read_stata(fn::String; chunks::Int=10, keep_original = false)
 
     fh = open(fn, "r")
 
@@ -276,10 +276,11 @@ function read_stata(fn::String; chunks::Int=10, keep_original = true)
             rdf[!, varlist[i]] = convert(Vector{_eltype2(rdf[!, varlist[i]])}, rdf[!, varlist[i]])
         end
 
-        # for integer variables that have formats
-        # convert them into CategoricalArrays with the appropriate value labels
-        if typelist[i] in (65528, 65529, 65530) && haskey(lblname_dict, i)
-            rdf[!, varlist[i]] = categorical(recode2(rdf[!,varlist[i]], value_labels[lblname_dict[i]], keep_original = keep_original))
+        # if keep_original == false,
+        # convert integer variables that have formats 
+        # into CategoricalArrays with the appropriate value labels
+        if  keep_original == false && typelist[i] in (65528, 65529, 65530) && haskey(lblname_dict, i)
+            rdf[!, varlist[i]] = categorical(recode2(rdf[!,varlist[i]], value_labels[lblname_dict[i]])
         end
 
         # variable label
@@ -292,10 +293,10 @@ function read_stata(fn::String; chunks::Int=10, keep_original = true)
     return rdf
 end
 
-function recode2(vv::AbstractVector,dd::Dict; keep_original = true)
-    if keep_original
-        return [ haskey(dd,vv[i]) ? string(dd[vv[i]]," (",vv[i],")") : string("(",vv[i],")") for i in 1:length(vv)]
-    end
+function recode2(vv::AbstractVector,dd::Dict)
+    # if keep_original
+    #     return [ haskey(dd,vv[i]) ? string(dd[vv[i]]," (",vv[i],")") : string("(",vv[i],")") for i in 1:length(vv)]
+    # end
 
     return [ haskey(dd,vv[i]) ? dd[vv[i]] : string(vv[i]) for i in 1:length(vv)]
 end
