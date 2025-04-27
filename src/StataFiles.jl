@@ -1,7 +1,7 @@
 module StataFiles
 
 using DataFrames, CategoricalArrays, TableMetadataTools, 
-    OrderedCollections, Printf, Dates
+    OrderedCollections, Printf, Dates, InlineStrings
 
 export read_stata, write_stata
 
