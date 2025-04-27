@@ -714,7 +714,7 @@ function write_chunks(outdf, datatypes, typelist, ca)
                 else
                     write(iobuf, datatypes[i](ismissing(v) ? missingval[typelist[i]] : unwrap(v)))
                 end
-            elseif datatypes[i] == String
+            elseif datatypes[i] in (String, String1, String3, String7, String15, String31, String63, String127, String255)
                 write(iobuf, ismissing(v) ? repeat('\0', typelist[i]) : string(v, repeat('\0', typelist[i] - sizeof(v))))
             elseif datatypes[i] == Date
                 write(iobuf, Int32(ismissing(v) ? 2_147_483_621 : Dates.value(v - Date(1960,1,1)))) # stata doesn't support Int64
