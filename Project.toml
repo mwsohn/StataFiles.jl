@@ -8,6 +8,7 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 TableMetadataTools = "9ce81f87-eacc-4366-bf80-b621a3098ee2"
 OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+InlineStrings = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
 
 [compat]
 julia = "1.6"
@@ -17,6 +18,7 @@ Printf = "1.11"
 Dates = "1.11.0"
 TableMetadataTools = "0.1.0"
 OrderedCollections = "1.8.0"
+InlineStrings = "1.4.3"
 
 [extras]
 
