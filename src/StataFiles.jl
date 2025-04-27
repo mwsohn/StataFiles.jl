@@ -801,7 +801,7 @@ function get_types(outdf)
             elseif typ == Int64
                 tlist[i] = vtype[Int32]
                 numbytes[i] = bytesize[tlist[i]]
-            elseif typ == String
+            elseif typ in (String, String1, String3, String7, String15, String31, String63, String127, String255)
                 maxlen = getmaxbytes(outdf[:,i])
                 if maxlen < 2045
                     tlist[i] = maxlen + 1 # one byte for the null terminator
