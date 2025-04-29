@@ -14,8 +14,9 @@ and date and datatime formats are lost during conversion.
 and can handle very large files gracefully in memory strapped situations.
 * All variable labels will be imported with `TableMetadataTools.jl`. 
 * All variables with value labels will be imported into `CategoricalArrays` if `keep_original = false` is set. 
-Be careful. If this option is used, original value will be lost; only the value labels will be kept.
-If you want to keep original values, use the `keep_original = true` option. The default is `false`.
+If this option is used, original value will be kept in the CategoricalValues in the first part of the label followed by a `:`.
+If you want to keep original values, use the `keep_original = true` option. Then, the value labels will be ignored and the original
+values will be imported. The default is `false`.
 * All `int` or `long` variables with `%d` or `%td` formats will be imported as Julia dates
 using the `Dates` package.
 * All `float` or `double` variables with `%tc` or `%tC` formats will be
