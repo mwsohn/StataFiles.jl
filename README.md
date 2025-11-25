@@ -1,17 +1,15 @@
 # StataFiles.jl
 A Package to read and write Stata .dta files.
-This may be the first Julia -> Stata conversion program. 
+This may be the first Julia DataFrame to Stata conversion program. 
 Despite the excellent .dta file reader in `ReadStat.jl` package,
 I needed to write another .dta file reader because `ReadStat.jl`
-were not able to handle very large files well that are
-several gigabytes in size and all formats such as value labels
-and date and datatime formats are lost during conversion.
+was not able to handle very large files well and all formats such as value labels
+and date and datatime formats are lost during conversion. It is written entirely in Julia.
 
 `StataFiles.jl` provides the following functionalities:
-* It is written entirely in Julia.
 
 * When importing, it can break large files into small chunks
-and can handle very large files gracefully in memory strapped situations.
+and so can handle very large files gracefully in memory strapped situations.
 Use `chunks` option to specify the number of chunks to use (default = 10).
 
 * All variable labels will be imported using `TableMetadataTools.jl`. 
