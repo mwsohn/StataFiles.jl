@@ -1,10 +1,14 @@
-using Test, StataFiles, DataFrames, CategoricalArrays, FreqTables, RDatasets, Statistics, StatsBase
+using Test, StataFiles, DataFrames, CategoricalArrays, FreqTables, RDatasets, StatsBase, Dates
 
 mtcars = dataset("datasets", "mtcars")
 rename!(mtcars, Pair.(names(mtcars), lowercase.(names(mtcars))))
 
 mtcars.vsca = recode(mtcars.vs, (0 => "Straight", 1 => "V")...)
 mtcars.vsca = categorical(mtcars.vsca, ordered=true)
+
+# create a Date and DateTime variables
+mtcars.today .= Dates.today()
+mtcars.now .= Dates.now()
 
 # convert mtcars to a stata dta file
 write_stata("mtcars.dta", mtcars)
@@ -36,5 +40,12 @@ df1 = read_stata("mtcars.dta")
     @test mean_and_std(mtcars[!, :am]) == mean_and_std(df1[!, :am])
     @test mean_and_std(mtcars[!, :gear]) == mean_and_std(df1[!, :gear])
     @test mean_and_std(mtcars[!, :carb]) == mean_and_std(df1[!, :carb])
-end
+    
+    # compare CategoricalArrays
+    @test freqtable(mtcars[!,:vsca]) == freqtable(df1,:vsca)
 
+    # Dates and DateTimes
+    @test mtcars.today == df1.today
+    @test mtcars.now == df1.now
+
+end
