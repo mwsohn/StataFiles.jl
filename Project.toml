@@ -1,5 +1,6 @@
 name = "StataFiles"
 uuid = "4250fffb-2d87-4dab-9cf8-12ba0ef8cdb9"
+version = "0.1.0"
 
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
