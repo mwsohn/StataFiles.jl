@@ -673,7 +673,7 @@ function prepare_df(outdf; verbose=verbose)
         if !in(_eltype2(outdf[:,i]), [Bool, Int8, Int16, Int32, Int64, Float32, Float64, Date, DateTime, String, String1, String3, String7, String15, String31, String63, String127, String255])
             notallowed[i] = true
         end
-        if _eltype2(outdf[:,i]) == Int64
+        if !isa(outdf[:,i], CategoricalArray) && _eltype2(outdf[:,i]) == Int64
             tvec = collect(skipmissing(outdf[:,i]))
             if maximum(tvec) > 2_147_483_620 || minimum(tvec) < −2_147_483_647
                 notallowed[i] = true
