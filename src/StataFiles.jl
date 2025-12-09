@@ -670,15 +670,15 @@ function prepare_df(outdf; verbose=verbose)
     # large Int64 values that cannot be saved as Int32 cannot be ported either
     notallowed = falses(size(outdf,2))
     for i in 1:ncol(outdf)
-        if !in(_eltype2(outdf[:,i]), [Bool, Int8, Int16, Int32, Int64, Float32, Float64, Date, DateTime, String, String1, String3, String7, String15, String31, String63, String127, String255])
+        if !in(_eltype2(outdf[:,i]), [Bool, Int8, Int16, Int32, Float32, Float64, Date, DateTime, String, String1, String3, String7, String15, String31, String63, String127, String255])
             notallowed[i] = true
         end
-        if !isa(outdf[:,i], CategoricalArray) && _eltype2(outdf[:,i]) == Int64
-            tvec = collect(skipmissing(outdf[:,i]))
-            if maximum(tvec) > 2_147_483_620 || minimum(tvec) < −2_147_483_647
-                notallowed[i] = true
-            end
-        end
+        # if !isa(outdf[:,i], CategoricalArray) && _eltype2(outdf[:,i]) == Int64
+        #     tvec = collect(skipmissing(outdf[:,i]))
+        #     if maximum(tvec) > 2_147_483_620 || minimum(tvec) < −2_147_483_647
+        #         notallowed[i] = true
+        #     end
+        # end
     end
     
     # report exclusions
