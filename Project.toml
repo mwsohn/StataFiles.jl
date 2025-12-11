@@ -14,7 +14,7 @@ InlineStrings = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
 [compat]
 julia = "^1.6"
 DataFrames = "^1.7"
-CategoricalArrays = "^0.6, 1.0"
+CategoricalArrays = "0.6, 0.7, 0.8, 0.9 1.0"
 Printf = "^1.0"
 Dates = "^1.0"
 TableMetadataTools = "^0.1"
