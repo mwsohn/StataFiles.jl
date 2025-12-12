@@ -688,7 +688,8 @@ function prepare_df(outdf; verbose=verbose)
     df = outdf[:, findall(x -> x == false, notallowed)]
 
     datatypes = dtypes(df)
-    ca = [ isa(x,CategoricalArray) ? true : false for x in eachcol(df)]
+    ca = [isa(x, CategoricalArray) ? true : false for x in eachcol(df)]
+
     (typelist, numbytes) = get_types(df)
     vlabels = get_value_labels(df)
 
