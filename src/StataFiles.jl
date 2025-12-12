@@ -399,7 +399,7 @@ end
 
 function _eltype2(a::AbstractArray)
     if isa(a, CategoricalArray)
-        return nonmissingtype(eltype(levels(a)))
+        return nonmissingtype(eltype(a.pool.levels))
     end
     return nonmissingtype(eltype(a))
 end
