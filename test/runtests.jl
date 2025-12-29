@@ -1,4 +1,4 @@
-using Test, StataFiles, DataFrames, CategoricalArrays, FreqTables, RDatasets, StatsBase, Dates
+using Test, StataIO, DataFrames, CategoricalArrays, FreqTables, RDatasets, StatsBase, Dates
 
 mtcars = dataset("datasets", "mtcars")
 rename!(mtcars, Pair.(names(mtcars), lowercase.(names(mtcars))))
