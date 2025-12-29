@@ -1,4 +1,4 @@
-# StataFiles.jl
+# StataIO.jl
 A Package to read and write Stata .dta files.
 This may be the first Julia DataFrame to Stata conversion program. 
 Despite the excellent .dta file reader in `ReadStat.jl` package,
@@ -6,7 +6,7 @@ I needed to write another .dta file reader because `ReadStat.jl`
 was not able to handle very large files well and all formats such as value labels
 and date and datatime formats are lost during conversion. It is written entirely in Julia.
 
-`StataFiles.jl` provides the following functionalities:
+`StataIO.jl` provides the following functionalities:
 
 * When importing, it can break large files into small chunks
 and so can handle very large files gracefully in memory strapped situations.
@@ -37,7 +37,7 @@ with all value labels.
 ## Installation
 
 ```
-] add StataFiles.jl
+] add StataIO
 ```
 
 ## Syntax
