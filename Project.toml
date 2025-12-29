@@ -12,7 +12,6 @@ OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
 InlineStrings = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
 
 [compat]
-Julia = "1.6"
 DataFrames = "1.7"
 CategoricalArrays = "0.1,1.9"
 Printf = "1.6"
