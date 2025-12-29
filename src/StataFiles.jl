@@ -1,4 +1,4 @@
-module StataFiles
+module StataIO
 
 using DataFrames, CategoricalArrays, TableMetadataTools, 
     OrderedCollections, Printf, Dates, InlineStrings
