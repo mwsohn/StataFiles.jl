@@ -13,7 +13,7 @@ InlineStrings = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
 
 [compat]
 DataFrames = "1.7"
-CategoricalArrays = "0.1,1.9"
+CategoricalArrays = "1"
 Printf = "1"
 Dates = "1"
 TableMetadataTools = "0.1"
